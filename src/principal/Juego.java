@@ -36,7 +36,7 @@ public class Juego {
 		// Debe saber la puntuacion del jugador e intentar superarla sin pasarse.
 		do {
 			banca.pedirCarta(baraja);
-		} while (!banca.finDeJuego() && banca.valorMano()<jugador.valorMano());
+		} while (!banca.finDeJuego() && banca.valorMano()<jugador.valorMano() && banca.valorMano()<17);
 		System.out.println("La banca ha sacado: "+banca);
 	}
 	
@@ -71,28 +71,28 @@ public class Juego {
 			System.out.println("Ambos habéis perdido:\nTú y la banca os habeis pasado de 21\n");
 		}
 		else if (banca.valorMano()>21) {
-			System.out.println("La banca ha perdido:\nSe ha pasado de 21\n");
+			System.out.println("La banca ha perdido:\nSe ha pasado de 21\nGanaste\n");
 		}
 		else if (jugador.valorMano()>21) {
-			System.out.println("Has perdido\nTe has pasado de 21");
-		}
-		else {
-			if (jugador.valorMano()>banca.valorMano() && 
-					jugador.valorMano()<=21 && banca.valorMano()<=21) {
-				System.out.println("Ganaste a la banca\n");
-			}
-			else if (jugador.valorMano()==banca.valorMano()
-					&& jugador.valorMano()<=21 && banca.valorMano()<=21) {
-				System.out.println("Empate\n");
-			}
-			else if (jugador.valorMano()<banca.valorMano() && 
-					jugador.valorMano()<=21 && banca.valorMano()<=21) {
-				System.out.println("Perdiste contra la banca\n");
-			}
+			System.out.println("Has perdido:\nTe has pasado de 21\nGana la banca\n");
 		}
 		
+		if (jugador.valorMano()>banca.valorMano() && 
+				jugador.valorMano()<=21 && banca.valorMano()<=21) {
+			System.out.println("Ganaste a la banca\n");
+		}
+		else if (jugador.valorMano()<banca.valorMano() && 
+				banca.valorMano()<=21 && jugador.valorMano()<=21) {
+			System.out.println("Perdiste contra la banca\n");
+		}
+		else if (jugador.valorMano()==banca.valorMano()
+				&& jugador.valorMano()<=21 && banca.valorMano()<=21) {
+			System.out.println("Empate\n");
+		}
+			
+		
 		System.out.println("Tú valor final: "+jugador.valorMano()+"\n");
-		System.out.println("Valor final del rival: "+banca.valorMano()+"\n");
+		System.out.println("Valor final de la banca: "+banca.valorMano()+"\n");
 	}
 	
 }
