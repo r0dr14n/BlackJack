@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import clases.Carta;
 import clases.Carta.Palo;
+import excepciones.NoHayMasCartasException;
 
 public class Mazo {
 	
@@ -53,12 +54,14 @@ public class Mazo {
 	/*solicitarCarta. Metodo sin parametros que devuelve la primera carta 
 	del mazo eliminandola de la lista*/
 	
-	public Carta solicitarCarta() {
+	public Carta solicitarCarta() throws NoHayMasCartasException {
+		if (this.cartas.size()==0) {
+			throw new NoHayMasCartasException();
+		}
 		Carta carta=cartas.get(0);
 		this.cartas.remove(0);
 		return carta;
 	}
-	
 	
 	
 }

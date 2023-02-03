@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import clases.Carta;
 import clases.Carta.Palo;
+import excepciones.NoHayMasCartasException;
 
 public class Mano extends Mazo {
 	
@@ -54,8 +55,13 @@ public class Mano extends Mazo {
 	/*• Método pedirCarta(Mazo m) al que se le pasa un mazo de cartas, 
 	deberá solicitar una carta al mazo e incluirla en la mano.*/
 	
-		public void pedirCarta(Mazo m) {
-			cartas.add(m.solicitarCarta());
+		public void pedirCarta(Mazo m) throws NoHayMasCartasException {
+			Carta c = m.solicitarCarta();
+			this.cartas.add(c);
 		}
-	
+		
+		
+		
+		
+		
 }
